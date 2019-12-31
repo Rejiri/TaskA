@@ -1,0 +1,128 @@
+<div>
+    <h3>Add Patient</h3>
+    <br />
+    <form #pForm="ngForm" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="control-label">Name</label>
+                <input class="form-control" type="text" formControlName="name" placeholder="enter full name" required>
+                <span class="text-danger" *ngIf="pForm.submitted && name.invalid">required field.</span>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label">Birthdate</label>
+                <input class="form-control" type="date" formControlName="birthdate" required>
+                <span class="text-danger" *ngIf="pForm.submitted && birthdate.invalid">required field.</span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="control-label">File No</label>
+                <input class="form-control" type="number" formControlName="fileNo" placeholder="enter file number"
+                    required>
+                <span class="text-danger" *ngIf="pForm.submitted && fileNo.invalid">required field.</span>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label">Citizen Id</label>
+                <input class="form-control" type="text" formControlName="citizenId">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Gender</label>
+            <div class="col-md-6">
+                <select formControlName="gender">
+                    <option *ngFor="let item of genders; let i = index" [value]="genders[i].id">
+                        {{genders[i].value}}
+                    </option>
+                </select>
+            </div>
+            <span class="text-danger" *ngIf="pForm.submitted && gender.invalid">required field.</span>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Nationality</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="nationality">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Phone Number</label>
+            <div class="col-md-6">
+                <input class="form-control" type="tel" formControlName="phoneNumber">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Email</label>
+            <div class="col-md-6">
+                <input class="form-control" type="email" formControlName="email" placeholder="enter valid email address"
+                    required>
+            </div>
+            <span class="text-danger" *ngIf="pForm.submitted && email.invalid">required field.</span>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Country</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="country">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">City</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="city">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Street</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="street">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Address</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="address1" placeholder="1234 Main St">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Address 2</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="address2"
+                    placeholder="Apartment, studio, or floor">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Contact Person</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="contactPerson">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Contact Relation</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="contactRelation">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Contact Phone</label>
+            <div class="col-md-6">
+                <input class="form-control" type="text" formControlName="contactPhone">
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">Photo</label>
+            <div class="col-md-6">
+                <input #file class="form-control" type="file" formControlName="photoUrl"
+                    (change)="fileChanged($event.target.files)" required>
+            </div>
+            <span class="text-danger" *ngIf="pForm.submitted && file.files.length == 0">required field.</span>
+        </div>
+        <div class="form-row form-group">
+            <label class="control-label col-md-4">First Visit</label>
+            <div class="col-md-6">
+                <input class="form-control" type="date" formControlName="firstVisitDate" required>
+            </div>
+            <span class="text-danger" *ngIf="pForm.submitted && firstVisitDate.invalid">required field.</span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Add</button>
+        </div>
+    </form>
+</div>
